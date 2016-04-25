@@ -1,5 +1,7 @@
 # Ansible Role: Vim & Vi-mode
 
+[![Build Status](https://travis-ci.org/chusiang/vim-and-vi-mode.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/vim-and-vi-mode.ansible.role)
+
 An Ansible role of Install Vim and use vi-mode in everyway.
 
 ## Requirements

@@ -1,0 +1,37 @@
+language: bash
+sudo: true
+services:
+  - docker
+
+before_install:
+  - docker info
+  - docker version
+  
+  - echo "==> Build with Docker ..."
+  
+  # Ubuntu
+  - docker build -f test/Dockerfile.ubuntu12  -t vim:ubuntu12 . | tee build_result_ubuntu12
+  - docker build -f test/Dockerfile.ubuntu14  -t vim:ubuntu14 . | tee build_result_ubuntu14
+  #- docker build -f test/Dockerfile.ubuntu16  -t vim:ubuntu16 . | tee build_result_ubuntu16
+  
+  # Debian
+  - docker build -f test/Dockerfile.debian7 -t vim:debian7 .    | tee build_result.debian7
+  - docker build -f test/Dockerfile.debian8 -t vim:debian8 .    | tee build_result.debian8
+  
+  # CentOS
+  - docker build -f test/Dockerfile.centos6 -t vim:centos6 .    | tee build_result.centos6
+  - docker build -f test/Dockerfile.centos7 -t vim:centos7 .    | tee build_result.centos7
+  
+script:
+  - echo "==> Run Test case ..."
+  
+  - grep 'VIM - Vi IMproved' build_result_ubuntu12
+  - grep 'VIM - Vi IMproved' build_result_ubuntu14
+  #- grep 'VIM - Vi IMproved' build_result_ubuntu16
+
+  - grep 'VIM - Vi IMproved' build_result_debian7
+  - grep 'VIM - Vi IMproved' build_result_debian8
+
+  - grep 'VIM - Vi IMproved' build_result_centos6
+  - grep 'VIM - Vi IMproved' build_result_centos7
+

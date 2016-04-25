@@ -16,7 +16,6 @@ galaxy_info:
       versions:
       - precise
       - trusty
-      - xenial
     - name: EL
       versions:
       - 6

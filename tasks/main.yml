@@ -1,0 +1,16 @@
+#!/usr/bin/env ansible-playbook
+# vim:ft=ansible :
+
+---
+
+- name: delegate to apt system for installation
+  include: use-apt.yml
+  when: ansible_pkg_mgr == "apt"
+
+- name: delegate to yum system for installation
+  include: use-yum.yml
+  when: ansible_pkg_mgr == "yum"
+
+- name: use vi-mode in readline
+  lineinfile: dest=/etc/inputrc line="set editing-mode vi"
+

@@ -10,9 +10,9 @@ before_install:
   - echo "==> Build with Docker ..."
   
   # Ubuntu
-  - docker build -f test/Dockerfile.ubuntu12  -t vim:ubuntu12 . | tee build_result_ubuntu12
-  - docker build -f test/Dockerfile.ubuntu14  -t vim:ubuntu14 . | tee build_result_ubuntu14
-  #- docker build -f test/Dockerfile.ubuntu16  -t vim:ubuntu16 . | tee build_result_ubuntu16
+  - docker build -f test/Dockerfile.ubuntu12  -t vim:ubuntu12 . | tee build_result.ubuntu12
+  - docker build -f test/Dockerfile.ubuntu14  -t vim:ubuntu14 . | tee build_result.ubuntu14
+  #- docker build -f test/Dockerfile.ubuntu16  -t vim:ubuntu16 . | tee build_result.ubuntu16
   
   # Debian
   - docker build -f test/Dockerfile.debian7 -t vim:debian7 .    | tee build_result.debian7
@@ -25,13 +25,13 @@ before_install:
 script:
   - echo "==> Run Test case ..."
   
-  - grep 'VIM - Vi IMproved' build_result_ubuntu12
-  - grep 'VIM - Vi IMproved' build_result_ubuntu14
-  #- grep 'VIM - Vi IMproved' build_result_ubuntu16
+  - grep 'VIM - Vi IMproved' build_result.ubuntu12
+  - grep 'VIM - Vi IMproved' build_result.ubuntu14
+  #- grep 'VIM - Vi IMproved' build_result.ubuntu16
 
-  - grep 'VIM - Vi IMproved' build_result_debian7
-  - grep 'VIM - Vi IMproved' build_result_debian8
+  - grep 'VIM - Vi IMproved' build_result.debian7
+  - grep 'VIM - Vi IMproved' build_result.debian8
 
-  - grep 'VIM - Vi IMproved' build_result_centos6
-  - grep 'VIM - Vi IMproved' build_result_centos7
+  - grep 'VIM - Vi IMproved' build_result.centos6
+  - grep 'VIM - Vi IMproved' build_result.centos7
 

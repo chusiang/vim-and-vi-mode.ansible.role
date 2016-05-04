@@ -19,8 +19,8 @@ before_install:
   - docker build -f test/Dockerfile.debian8 -t vim:debian8 .    | tee build_result.debian8
   
   # CentOS
-  - docker build -f test/Dockerfile.centos6 -t vim:centos6 .    | tee build_result.centos6
-  - docker build -f test/Dockerfile.centos7 -t vim:centos7 .    | tee build_result.centos7
+  #- docker build -f test/Dockerfile.centos6 -t vim:centos6 .    | tee build_result.centos6
+  #- docker build -f test/Dockerfile.centos7 -t vim:centos7 .    | tee build_result.centos7
   
 script:
   - echo "==> Run Test case ..."
@@ -32,6 +32,6 @@ script:
   - grep 'VIM - Vi IMproved' build_result.debian7
   - grep 'VIM - Vi IMproved' build_result.debian8
 
-  - grep 'VIM - Vi IMproved' build_result.centos6
-  - grep 'VIM - Vi IMproved' build_result.centos7
+  #- grep 'VIM - Vi IMproved' build_result.centos6
+  #- grep 'VIM - Vi IMproved' build_result.centos7
 

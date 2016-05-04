@@ -15,6 +15,22 @@
   include: use-brew.yml
   when: ansible_pkg_mgr == "homebrew"
 
+# inputrc
 - name: use vi-mode in readline
+  become: yes
   lineinfile: dest=/etc/inputrc line="set editing-mode vi"
+
+# gitconfig
+- name: check if 'gitconfig' target exists
+  stat: path=/etc/gitconfig
+  register: file_check_gitconfig
+
+- name: touch file - gitconfig
+  become: yes
+  file: path=/etc/gitconfig state=touch mode="u=rw,g=r,o=r"
+  when: file_check_gitconfig.stat.exists == false
+
+- name: setting $GIT_EDITOR
+  become: yes
+  lineinfile: dest=/etc/gitconfig line="export GIT_EDITOR=vim"
 

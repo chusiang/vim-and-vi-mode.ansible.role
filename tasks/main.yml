@@ -3,13 +3,17 @@
 
 ---
 
-- name: delegate to apt system for installation
+- name: delegate to 'apt' system for installation
   include: use-apt.yml
   when: ansible_pkg_mgr == "apt"
 
-- name: delegate to yum system for installation
+- name: delegate to 'yum' system for installation
   include: use-yum.yml
   when: ansible_pkg_mgr == "yum"
+
+- name: delegate to 'homebrew' system for installation
+  include: use-brew.yml
+  when: ansible_pkg_mgr == "homebrew"
 
 - name: use vi-mode in readline
   lineinfile: dest=/etc/inputrc line="set editing-mode vi"

@@ -1,0 +1,18 @@
+#!/usr/bin/env ansible-playbook
+# vim:ft=ansible :
+
+---
+
+# Install Vim.
+- name: install vim on mac system
+  become: yes
+  homebrew: name=vim state=present
+
+- name: use vi-mode in bash
+  become: yes
+  lineinfile: dest=/etc/bashrc line="set -o vi"
+
+- name: use dark background in vim
+  become: yes
+  lineinfile: dest=/usr/share/vim/vimrc line="set background=dark"
+

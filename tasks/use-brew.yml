@@ -12,7 +12,13 @@
   become: yes
   lineinfile: dest=/etc/bashrc line="set -o vi"
 
+- name: touch file - vimrc
+  file: path=/usr/local/share/vim/vimrc state=touch mode="u=rw,g=r,o=r"
+
 - name: use dark background in vim
+  lineinfile: dest=/usr/local/share/vim/vimrc line="set background=dark"
+
+- name: touch file - inputrc
   become: yes
-  lineinfile: dest=/usr/share/vim/vimrc line="set background=dark"
+  file: path=/etc/inputrc state=touch mode="u=rw,g=r,o=r"
 

@@ -10,10 +10,7 @@ None.
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
-
-    # Ubuntu
-    ...
+None.
 
 ## Dependencies
 
@@ -27,4 +24,4 @@ None.
 
 ## License
 
-MIT
+Copyleft (ɔ) chusiang from 2016 under the MIT license.

@@ -35,3 +35,6 @@ script:
   #- grep 'VIM - Vi IMproved' build_result.centos6
   #- grep 'VIM - Vi IMproved' build_result.centos7
 
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+

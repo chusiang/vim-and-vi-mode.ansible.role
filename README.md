@@ -24,4 +24,4 @@ None.
 
 ## License
 
-Copyleft (ɔ) chusiang from 2016 under the MIT license.
+Copyright (ɔ) chusiang from 2016 under the MIT license.

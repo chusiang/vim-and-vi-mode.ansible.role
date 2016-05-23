@@ -20,6 +20,7 @@
   lineinfile: dest=/etc/bash.bashrc line="set -o vi"
 
 - name: setting $EDITOR
+  become: yes
   lineinfile: dest=/etc/bash.bashrc line="export EDITOR=vim"
 
 - name: use dark background in vim

@@ -21,16 +21,13 @@
   lineinfile: dest=/etc/inputrc line="set editing-mode vi"
 
 # gitconfig
-- name: check if 'gitconfig' target exists
-  stat: path=/etc/gitconfig
-  register: file_check_gitconfig
-
-- name: touch file - gitconfig
+- name: setting vi-mode for git
   become: yes
-  file: path=/etc/gitconfig state=touch mode="u=rw,g=r,o=r"
-  when: file_check_gitconfig.stat.exists == false
-
-- name: setting $GIT_EDITOR
-  become: yes
-  lineinfile: dest=/etc/gitconfig line="export GIT_EDITOR=vim"
+  template: >
+    src=templates/gitconfig.j2 
+    dest=/etc/gitconfig
+    owner=root
+    group=root
+    mode=0644
+    backup=yes
 

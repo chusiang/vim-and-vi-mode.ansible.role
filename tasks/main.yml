@@ -18,14 +18,14 @@
 # inputrc
 - name: use vi-mode in readline
   become: yes
-  lineinfile: dest=/etc/inputrc line="set editing-mode vi"
+  lineinfile: dest="/etc/inputrc" line="set editing-mode vi"
 
 # gitconfig
 - name: setting vi-mode for git
   become: yes
   template: >
-    src=templates/gitconfig.j2 
-    dest=/etc/gitconfig
+    src="templates/gitconfig.j2"
+    dest="/etc/gitconfig"
     owner=root
     group=root
     mode=0644

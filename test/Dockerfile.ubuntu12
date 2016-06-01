@@ -8,7 +8,7 @@
 
 
 # pull base image
-FROM williamyeh/ansible:1.9-ubuntu12.04-onbuild
+FROM williamyeh/ansible:ubuntu12.04-onbuild
 
 MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
 

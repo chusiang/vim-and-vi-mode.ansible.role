@@ -37,6 +37,9 @@ This repository contains Dockerized [Ansible](https://github.com/ansible/ansible
 ### Usage
 
     $ docker run -it -v /src:/data chusiang/vim-and-vi-mode:ubuntu14.04 bash
+    root@a138a8d7ca3c:/tmp# vim --version
+    VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Jan  2 2014 19:39:32)
+    ...
 
 ## License
 

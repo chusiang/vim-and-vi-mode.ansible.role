@@ -19,7 +19,7 @@ MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
 RUN sed -i -e 's/exit\s\s*101/exit 0/' /usr/sbin/policy-rc.d
 
 # init.
-RUN sudo apt-get install -y curl git make ;\
+RUN apt-get install -y curl git make sudo ;\
       git clone https://github.com/chusiang/vim-and-vi-mode.ansible.role.git ;\
       cd vim-and-vi-mode.ansible.role
       

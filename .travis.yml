@@ -10,30 +10,30 @@ before_install:
   - echo "==> Build with Docker ..."
   
   # Ubuntu
-  - docker build -f test/Dockerfile.ubuntu12  -t vim:ubuntu12 . | tee build_result.ubuntu12
-  - docker build -f test/Dockerfile.ubuntu14  -t vim:ubuntu14 . | tee build_result.ubuntu14
-  #- docker build -f test/Dockerfile.ubuntu16  -t vim:ubuntu16 . | tee build_result.ubuntu16
+  - docker build -f tests/Dockerfile.ubuntu12.04  -t vim:ubuntu12.04 . | tee tests/output.ubuntu12.04.log
+  - docker build -f tests/Dockerfile.ubuntu14.04  -t vim:ubuntu14.04 . | tee tests/output.ubuntu14.04.log
+  #- docker build -f tests/Dockerfile.ubuntu16.04  -t vim:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
   
   # Debian
-  - docker build -f test/Dockerfile.debian7 -t vim:debian7 .    | tee build_result.debian7
-  - docker build -f test/Dockerfile.debian8 -t vim:debian8 .    | tee build_result.debian8
+  - docker build -f tests/Dockerfile.debian7 -t vim:debian7 .    | tee tests/output.debian7.log
+  - docker build -f tests/Dockerfile.debian8 -t vim:debian8 .    | tee tests/output.debian8.log
   
   # CentOS
-  #- docker build -f test/Dockerfile.centos6 -t vim:centos6 .    | tee build_result.centos6
-  #- docker build -f test/Dockerfile.centos7 -t vim:centos7 .    | tee build_result.centos7
+  - docker build -f tests/Dockerfile.centos6 -t vim:centos6 .    | tee tests/output.centos6.log
+  #- docker build -f tests/Dockerfile.centos7 -t vim:centos7 .    | tee tests/output.centos7.log
   
 script:
   - echo "==> Run Test case ..."
   
-  - grep 'VIM - Vi IMproved' build_result.ubuntu12
-  - grep 'VIM - Vi IMproved' build_result.ubuntu14
-  #- grep 'VIM - Vi IMproved' build_result.ubuntu16
+  - grep 'VIM - Vi IMproved' tests/output.ubuntu12.04.log
+  - grep 'VIM - Vi IMproved' tests/output.ubuntu14.04.log
+  #- grep 'VIM - Vi IMproved' tests/output.ubuntu16.04.log
 
-  - grep 'VIM - Vi IMproved' build_result.debian7
-  - grep 'VIM - Vi IMproved' build_result.debian8
+  - grep 'VIM - Vi IMproved' tests/output.debian7.log
+  - grep 'VIM - Vi IMproved' tests/output.debian8.log
 
-  #- grep 'VIM - Vi IMproved' build_result.centos6
-  #- grep 'VIM - Vi IMproved' build_result.centos7
+  - grep 'VIM - Vi IMproved' tests/output.centos6.log
+  #- grep 'VIM - Vi IMproved' tests/output.centos7.log
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

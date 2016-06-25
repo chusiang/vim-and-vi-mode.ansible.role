@@ -1,3 +1,9 @@
+# vagrant
 .vagrant
+
+# ansible
 setup.retry
+
+# docker
+tests/output.*.log
 build_result*

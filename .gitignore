@@ -6,4 +6,5 @@ setup.retry
 
 # docker
 tests/output.*.log
+builds/*/outlog.log
 build_result*

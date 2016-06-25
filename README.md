@@ -31,7 +31,10 @@ This repository contains Dockerized [Ansible](https://github.com/ansible/ansible
 ### Images
 
 * chusiang/vim-and-vi-mode:ubuntu14.04 (lastest)
+* chusiang/vim-and-vi-mode:ubuntu16.04
+* chusiang/vim-and-vi-mode:debian7
 * chusiang/vim-and-vi-mode:debian8
+* chusiang/vim-and-vi-mode:centos6
 * chusiang/vim-and-vi-mode:centos7
 
 ### Usage

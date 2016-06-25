@@ -12,7 +12,7 @@ before_install:
   # Ubuntu
   - docker build -f tests/Dockerfile.ubuntu12.04  -t vim:ubuntu12.04 . | tee tests/output.ubuntu12.04.log
   - docker build -f tests/Dockerfile.ubuntu14.04  -t vim:ubuntu14.04 . | tee tests/output.ubuntu14.04.log
-  #- docker build -f tests/Dockerfile.ubuntu16.04  -t vim:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
+  - docker build -f tests/Dockerfile.ubuntu16.04  -t vim:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
   
   # Debian
   - docker build -f tests/Dockerfile.debian7 -t vim:debian7 .    | tee tests/output.debian7.log
@@ -20,20 +20,23 @@ before_install:
   
   # CentOS
   - docker build -f tests/Dockerfile.centos6 -t vim:centos6 .    | tee tests/output.centos6.log
-  #- docker build -f tests/Dockerfile.centos7 -t vim:centos7 .    | tee tests/output.centos7.log
+  - docker build -f tests/Dockerfile.centos7 -t vim:centos7 .    | tee tests/output.centos7.log
   
 script:
   - echo "==> Run Test case ..."
   
+  # Ubuntu
   - grep 'VIM - Vi IMproved' tests/output.ubuntu12.04.log
   - grep 'VIM - Vi IMproved' tests/output.ubuntu14.04.log
-  #- grep 'VIM - Vi IMproved' tests/output.ubuntu16.04.log
+  - grep 'VIM - Vi IMproved' tests/output.ubuntu16.04.log
 
+  # Debian
   - grep 'VIM - Vi IMproved' tests/output.debian7.log
   - grep 'VIM - Vi IMproved' tests/output.debian8.log
 
+  # CentOS
   - grep 'VIM - Vi IMproved' tests/output.centos6.log
-  #- grep 'VIM - Vi IMproved' tests/output.centos7.log
+  - grep 'VIM - Vi IMproved' tests/output.centos7.log
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

@@ -11,7 +11,7 @@
       include: tasks/main.yml
 
     - name: check vim version
-      shell: vim --version
+      command: vim --version
       register: vim_version
 
     - name: print vim version

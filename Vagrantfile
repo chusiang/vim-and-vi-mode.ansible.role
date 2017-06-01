@@ -26,6 +26,12 @@ Vagrant.configure("2") do |config|
   # Ubuntu 16.04
   config.vm.define "ubuntu1604" do |node|
     node.vm.box = "ubuntu/xenial64"
+
+    node.vm.provision "shell",
+      inline: "sudo sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list"
+
+    node.vm.provision "shell",
+      inline: "sudo apt-get update && sudo apt-get install -y python"
     
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"

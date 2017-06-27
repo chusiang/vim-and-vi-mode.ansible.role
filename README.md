@@ -2,8 +2,11 @@
 
 [![Build Status](https://travis-ci.org/chusiang/vim-and-vi-mode.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/vim-and-vi-mode.ansible.role) [![Ansible Galaxy](https://img.shields.io/badge/role-vim--and--vi--mode-blue.svg)](https://galaxy.ansible.com/chusiang/vim-and-vi-mode/) [![Docker Hub](https://img.shields.io/badge/docker-vim--and--vi--mode-blue.svg)](https://hub.docker.com/r/chusiang/vim-and-vi-mode/) [![](https://images.microbadger.com/badges/image/chusiang/vim-and-vi-mode.svg)](https://microbadger.com/images/chusiang/vim-and-vi-mode "Get your own image badge on microbadger.com")
 
-
 An Ansible role of Install Vim and use vi-mode in everyway.
+
+1. Install Vim.
+1. Switch default editor to Vim.
+1. Use vi-mode in Bash, Readline and Git.
 
 ## Requirements
 
@@ -47,4 +50,4 @@ This repository contains Dockerized [Ansible](https://github.com/ansible/ansible
 
 ## License
 
-Copyright (c) chusiang from 2016 under the MIT license.
+Copyright (c) chusiang from 2016-2017 under the MIT license.

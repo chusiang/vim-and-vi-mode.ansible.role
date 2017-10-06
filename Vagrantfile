@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
 		end
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
-      ansible.sudo = true
+      ansible.become = true
     end
   end
 
@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
 		end
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
-      ansible.sudo = true
+      ansible.become = true
     end
   end
 
@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
       inline: "sudo apt-get update && sudo apt-get install -y python"
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
-      ansible.sudo = true
+      ansible.become = true
     end
   end
 
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
 		end
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
-      ansible.sudo = true
+      ansible.become = true
     end
   end
 
@@ -69,7 +69,7 @@ Vagrant.configure("2") do |config|
 		end
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
-      ansible.sudo = true
+      ansible.become = true
     end
   end
 
@@ -81,7 +81,7 @@ Vagrant.configure("2") do |config|
 		end
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
-      ansible.sudo = true
+      ansible.become = true
     end
   end
 
@@ -96,7 +96,7 @@ Vagrant.configure("2") do |config|
 		end
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
-      ansible.sudo = true
+      ansible.become = true
     end
   end
   
@@ -108,7 +108,7 @@ Vagrant.configure("2") do |config|
 		end
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
-      ansible.sudo = true
+      ansible.become = true
     end
   end
 

@@ -1,9 +1,9 @@
 # Dockerfile for building image that contains software stack provisioned by Ansible.
 
-FROM williamyeh/ansible:ubuntu14.04-onbuild
+FROM williamyeh/ansible:debian9-onbuild
 MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
 
-# init.
+# init
 #
 # fix policy-rc.d for Docker
 # @see http://www.monblocnotes.com/node/2057

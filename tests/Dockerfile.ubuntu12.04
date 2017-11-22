@@ -22,7 +22,7 @@ MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
 # @see http://askubuntu.com/a/365912
 RUN sed -i -e 's/exit\s\s*101/exit 0/' /usr/sbin/policy-rc.d
 
-ENV PLAYBOOK setup.yml
+ENV PLAYBOOK provision.yml
 RUN ansible-playbook-wrapper -vvv
 
 

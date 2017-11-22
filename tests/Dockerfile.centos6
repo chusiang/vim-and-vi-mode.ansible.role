@@ -17,7 +17,7 @@ MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
 # build phase
 #
 
-ENV PLAYBOOK setup.yml
+ENV PLAYBOOK provision.yml
 RUN ansible-playbook-wrapper -vvv
 
 

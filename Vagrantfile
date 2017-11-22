@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
 		  v.linked_clone = true
 		end
     node.vm.provision "ansible" do |ansible|
-      ansible.playbook = "setup.yml"
+      ansible.playbook = "provision.yml"
       ansible.become = true
     end
   end
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
 		  v.linked_clone = true
 		end
     node.vm.provision "ansible" do |ansible|
-      ansible.playbook = "setup.yml"
+      ansible.playbook = "provision.yml"
       ansible.become = true
     end
   end
@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
     node.vm.provision "shell",
       inline: "sudo apt-get update && sudo apt-get install -y python"
     node.vm.provision "ansible" do |ansible|
-      ansible.playbook = "setup.yml"
+      ansible.playbook = "provision.yml"
       ansible.become = true
     end
   end
@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
 		  v.linked_clone = true
 		end
     node.vm.provision "ansible" do |ansible|
-      ansible.playbook = "setup.yml"
+      ansible.playbook = "provision.yml"
       ansible.become = true
     end
   end
@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
 		  v.linked_clone = true
 		end
     node.vm.provision "ansible" do |ansible|
-      ansible.playbook = "setup.yml"
+      ansible.playbook = "provision.yml"
       ansible.become = true
     end
   end
@@ -80,7 +80,7 @@ Vagrant.configure("2") do |config|
 		  v.linked_clone = true
 		end
     node.vm.provision "ansible" do |ansible|
-      ansible.playbook = "setup.yml"
+      ansible.playbook = "provision.yml"
       ansible.become = true
     end
   end
@@ -95,7 +95,7 @@ Vagrant.configure("2") do |config|
 		  v.linked_clone = true
 		end
     node.vm.provision "ansible" do |ansible|
-      ansible.playbook = "setup.yml"
+      ansible.playbook = "provision.yml"
       ansible.become = true
     end
   end
@@ -107,7 +107,7 @@ Vagrant.configure("2") do |config|
 		  v.linked_clone = true
 		end
     node.vm.provision "ansible" do |ansible|
-      ansible.playbook = "setup.yml"
+      ansible.playbook = "provision.yml"
       ansible.become = true
     end
   end

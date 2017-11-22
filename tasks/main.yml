@@ -1,6 +1,4 @@
 #!/usr/bin/env ansible-playbook
-# vim:ft=ansible :
-
 ---
 
 - name: delegate to 'apt' system for installation
@@ -31,3 +29,4 @@
     mode=0644
     backup=yes
 
+# vim: ft=ansible :

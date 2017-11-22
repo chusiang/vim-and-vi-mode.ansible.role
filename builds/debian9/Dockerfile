@@ -1,6 +1,7 @@
 # Dockerfile for building image that contains software stack provisioned by Ansible.
 
-FROM williamyeh/ansible:ubuntu14.04-onbuild
+# pull base image
+FROM williamyeh/ansible:debian9-onbuild
 MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
 
 # init.
@@ -10,6 +11,13 @@ MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
 # @see http://askubuntu.com/a/365912
 RUN sed -i -e 's/exit\s\s*101/exit 0/' /usr/sbin/policy-rc.d
 
+RUN apt-get install -y curl git make ;\
+      git clone https://github.com/chusiang/vim-and-vi-mode.ansible.role.git ;\
+      cd vim-and-vi-mode.ansible.role
+
 # run.
-ENV PLAYBOOK provision.yml
+ENV PLAYBOOK vim-and-vi-mode.ansible.role/provision.yml
 RUN ansible-playbook-wrapper -vvv
+
+# clean.
+RUN apt-get clean

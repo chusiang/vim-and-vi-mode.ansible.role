@@ -1,4 +1,4 @@
-.PHONY: main init syntax_check lint_check up run clean_roles clean
+.PHONY: main init syntax_check lint_check up run clean_roles clean retag_latest
 
 main: syntax_check lint_check
 
@@ -24,3 +24,7 @@ clean_roles:
 clean: clean_roles
 	-rm -f *.retry
 	vagrant destroy -f
+
+# Retag and push the latest tag.
+retag_latest:
+	-sh files/retag_latest.sh

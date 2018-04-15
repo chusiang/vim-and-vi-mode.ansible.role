@@ -1,31 +1,83 @@
 language: bash
-sudo: true
+sudo: required
 services:
   - docker
 
 before_install:
   - docker info
   - docker version
-  - echo "==> Build with Docker ..."
-  - docker build -f tests/Dockerfile.ubuntu12.04 -t vim:ubuntu12.04 . | tee tests/output.ubuntu12.04.log
-  - docker build -f tests/Dockerfile.ubuntu14.04 -t vim:ubuntu14.04 . | tee tests/output.ubuntu14.04.log
-  - docker build -f tests/Dockerfile.ubuntu16.04 -t vim:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
-  - docker build -f tests/Dockerfile.debian7 -t vim:debian7 . | tee tests/output.debian7.log
-  - docker build -f tests/Dockerfile.debian8 -t vim:debian8 . | tee tests/output.debian8.log
-  - docker build -f tests/Dockerfile.debian9 -t vim:debian9 . | tee tests/output.debian9.log
-  - docker build -f tests/Dockerfile.centos6 -t vim:centos6 . | tee tests/output.centos6.log
-  - docker build -f tests/Dockerfile.centos7 -t vim:centos7 . | tee tests/output.centos7.log
 
-script:
-  - echo "==> Run Test case ..."
-  - grep 'VIM - Vi IMproved' tests/output.ubuntu12.04.log
-  - grep 'VIM - Vi IMproved' tests/output.ubuntu14.04.log
-  - grep 'VIM - Vi IMproved' tests/output.ubuntu16.04.log
-  - grep 'VIM - Vi IMproved' tests/output.debian7.log
-  - grep 'VIM - Vi IMproved' tests/output.debian8.log
-  - grep 'VIM - Vi IMproved' tests/output.debian9.log
-  - grep 'VIM - Vi IMproved' tests/output.centos6.log
-  - grep 'VIM - Vi IMproved' tests/output.centos7.log
+jobs:
+  include:
+
+    # Stage of Syntax check
+    # =====================
+
+    - stage: Syntax check
+      script:
+        - echo "==> Syntax Check on Ansible 2.4 ..."
+        - docker run --rm -it -v $PWD:/srv chusiang/ansible:2.4 /bin/sh -c "cd /srv && ansible-playbook --syntax-check provision.yml"
+
+    - stage: Syntax check
+      script:
+        - echo "==> Syntax Check on Ansible 2.5 ..."
+        - docker run --rm -it -v $PWD:/srv chusiang/ansible:2.5 /bin/sh -c "cd /srv && ansible-playbook --syntax-check provision.yml"
+
+    # Stage of Lint check
+    # ===================
+
+    - stage: Lint check
+      script:
+        - echo "==> Lint Check on Ansible 2.4 ..."
+        - docker run --rm -it -v $PWD:/srv chusiang/ansible:2.4 /bin/sh -c "cd /srv && ansible-lint provision.yml"
+
+    - stage: Lint check
+      script:
+        - echo "==> Lint Check on Ansible 2.5 ..."
+        - docker run --rm -it -v $PWD:/srv chusiang/ansible:2.5 /bin/sh -c "cd /srv && ansible-lint provision.yml"
+
+    # Stage of Build
+    # ==============
+
+    - stage: Build
+      script:
+        - echo "==> Build on Ubuntu 14.04 ..."
+        - docker build -f tests/Dockerfile.ubuntu14.04 -t vim:ubuntu14.04 . | tee tests/output.ubuntu14.04.log
+
+        - echo "==> Run test case on Ubuntu 14.04 ..."
+        - grep 'VIM - Vi IMproved' tests/output.ubuntu14.04.log
+
+    - stage: Build
+      script:
+        - echo "==> Build on Ubuntu 16.04 ..."
+        - docker build -f tests/Dockerfile.ubuntu16.04 -t vim:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
+
+        - echo "==> Run test case on Ubuntu 16.04 ..."
+        - grep 'VIM - Vi IMproved' tests/output.ubuntu16.04.log
+
+    - stage: Build
+      script:
+        - echo "==> Build on Debian 8 ..."
+        - docker build -f tests/Dockerfile.debian8 -t vim:debian8 . | tee tests/output.debian8.log
+
+        - echo "==> Run test case on Debian 8 ..."
+        - grep 'VIM - Vi IMproved' tests/output.debian8.log
+
+    - stage: Build
+      script:
+        - echo "==> Build on Debian 9 ..."
+        - docker build -f tests/Dockerfile.debian9 -t vim:debian9 . | tee tests/output.debian9.log
+
+        - echo "==> Run test case on Debian 9 ..."
+        - grep 'VIM - Vi IMproved' tests/output.debian9.log
+
+    - stage: Build
+      script:
+        - echo "==> Build on CentOS 7 ..."
+        - docker build -f tests/Dockerfile.centos7 -t vim:centos7 . | tee tests/output.centos7.log
+
+        - echo "==> Run test case on CentOS 7 ..."
+        - grep 'VIM - Vi IMproved' tests/output.centos7.log
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

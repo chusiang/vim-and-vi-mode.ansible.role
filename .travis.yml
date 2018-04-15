@@ -41,19 +41,19 @@ jobs:
 
     - stage: Build
       script:
-        - echo "==> Build on Ubuntu 14.04 ..."
-        - docker build -f tests/Dockerfile.ubuntu14.04 -t vim:ubuntu14.04 . | tee tests/output.ubuntu14.04.log
+        - echo "==> Build on Alpine 3 ..."
+        - docker build -f tests/Dockerfile.alpine3 -t vim:alpine3 . | tee tests/output.alpine3.log
 
-        - echo "==> Run test case on Ubuntu 14.04 ..."
-        - grep 'VIM - Vi IMproved' tests/output.ubuntu14.04.log
+        - echo "==> Run test case on Alpine 3 ..."
+        - grep 'VIM - Vi IMproved' tests/output.alpine3.log
 
     - stage: Build
       script:
-        - echo "==> Build on Ubuntu 16.04 ..."
-        - docker build -f tests/Dockerfile.ubuntu16.04 -t vim:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
+        - echo "==> Build on CentOS 7 ..."
+        - docker build -f tests/Dockerfile.centos7 -t vim:centos7 . | tee tests/output.centos7.log
 
-        - echo "==> Run test case on Ubuntu 16.04 ..."
-        - grep 'VIM - Vi IMproved' tests/output.ubuntu16.04.log
+        - echo "==> Run test case on CentOS 7 ..."
+        - grep 'VIM - Vi IMproved' tests/output.centos7.log
 
     - stage: Build
       script:
@@ -73,19 +73,19 @@ jobs:
 
     - stage: Build
       script:
-        - echo "==> Build on CentOS 7 ..."
-        - docker build -f tests/Dockerfile.centos7 -t vim:centos7 . | tee tests/output.centos7.log
+        - echo "==> Build on Ubuntu 14.04 ..."
+        - docker build -f tests/Dockerfile.ubuntu14.04 -t vim:ubuntu14.04 . | tee tests/output.ubuntu14.04.log
 
-        - echo "==> Run test case on CentOS 7 ..."
-        - grep 'VIM - Vi IMproved' tests/output.centos7.log
+        - echo "==> Run test case on Ubuntu 14.04 ..."
+        - grep 'VIM - Vi IMproved' tests/output.ubuntu14.04.log
 
     - stage: Build
       script:
-        - echo "==> Build on Alpine 3 ..."
-        - docker build -f tests/Dockerfile.alpine3 -t vim:alpine3 . | tee tests/output.alpine3.log
+        - echo "==> Build on Ubuntu 16.04 ..."
+        - docker build -f tests/Dockerfile.ubuntu16.04 -t vim:ubuntu16.04 . | tee tests/output.ubuntu16.04.log
 
-        - echo "==> Run test case on Alpine 3 ..."
-        - grep 'VIM - Vi IMproved' tests/output.alpine3.log
+        - echo "==> Run test case on Ubuntu 16.04 ..."
+        - grep 'VIM - Vi IMproved' tests/output.ubuntu16.04.log
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

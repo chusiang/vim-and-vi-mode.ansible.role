@@ -4,6 +4,10 @@ DOMAIN = "vim-and-vi-mode.local"
 
 instances = [
   {
+    :name   => "alpine37",
+    :image  => "generic/alpine37"
+  },
+  {
     :name   => "ubuntu1204",
     :image  => "ubuntu/precise64"
   },
@@ -49,14 +53,20 @@ Vagrant.configure("2") do |config|
       node.vm.box = instance[:image].to_s
 
       # hostname = <instance name>.<DOMAIN>
-      node.vm.hostname = instance[:name].to_s + "." + DOMAIN
+      if ( instance[:name].to_s != "alpine37" )
+        node.vm.hostname = instance[:name].to_s + "." + DOMAIN
+      end
 
       node.vm.provider "virtualbox" do |vb|
         vb.linked_clone = true
       end
 
-      # Only for Ubuntu 16.04.
-      if ( instance[:name].to_s == "ubuntu1604" )
+      # Provision before run playbook.
+      case
+      when instance[:name].to_s == "alpine37"
+        node.vm.provision "shell",
+          inline: "sudo apk update && sudo apk add python"
+      when instance[:name].to_s == "ubuntu1604"
         node.vm.provision "shell",
           inline: "sudo sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list"
         node.vm.provision "shell",

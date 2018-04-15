@@ -1,9 +1,8 @@
-.PHONY: main init syntax_check lint_check up run clean_roles clean retag_latest
+.PHONY: main init syntax_check lint_check up run clean retag_latest
 
 main: syntax_check lint_check
 
 init:
-	ansible-galaxy install -f -p roles -r requirements.yml
 	if [ ! -d "/tmp/ansible-retry" ]; then mkdir "/tmp/ansible-retry"; fi
 
 syntax_check:
@@ -18,11 +17,8 @@ up:
 run:
 	ansible-playbook provision.yml -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory
 
-clean_roles:
-	-rm -rf roles/
-
-clean: clean_roles
-	-rm -f *.retry
+clean:
+	-rm -f *.retry ubuntu-*-console.log
 	vagrant destroy -f
 
 # Retag and push the latest tag.

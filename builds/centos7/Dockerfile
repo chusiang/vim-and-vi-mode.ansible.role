@@ -1,17 +1,23 @@
 # Dockerfile for building image that contains software stack provisioned by Ansible.
 
-# pull base image
 FROM williamyeh/ansible:centos7-onbuild
-MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
+MAINTAINER Chu-Siang Lai <chusiang@drx.tw>
 
-# init.
-RUN yum install -y curl git make ;\
-      git clone https://github.com/chusiang/vim-and-vi-mode.ansible.role.git ;\
+RUN echo "===> Install necessary packages ..."  && \
+      yum install -y curl git make ;\
+
+RUN echo "===> Get playbook ..."  && \
+      git clone --depth=1 https://github.com/chusiang/vim-and-vi-mode.ansible.role.git ;\
       cd vim-and-vi-mode.ansible.role
 
-# run.
 ENV PLAYBOOK vim-and-vi-mode.ansible.role/provision.yml
-RUN ansible-playbook-wrapper -vvv
 
-# clean.
-RUN yum clean all
+RUN echo "===> Run playbook ..."  && \
+      ansible-playbook-wrapper
+
+RUN echo "===> Clean ..."  && \
+      yum clean all
+
+WORKDIR /srv
+
+CMD [ "vim", "--version" ]

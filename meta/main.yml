@@ -19,6 +19,9 @@ galaxy_info:
       versions:
       - 6
       - 7
+    - name: Alpine
+      versions:
+      - all
     - name: MacOSX
       versions:
       - 10.11

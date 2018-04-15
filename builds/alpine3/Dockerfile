@@ -4,7 +4,7 @@ FROM williamyeh/ansible:alpine3-onbuild
 MAINTAINER Chu-Siang Lai <chusiang@drx.tw>
 
 RUN echo "===> Install necessary packages ..."  && \
-      apk add curl git make
+      apk add curl git make bash
 
 RUN echo "===> Get playbook ..."  && \
       git clone --depth=1 https://github.com/chusiang/vim-and-vi-mode.ansible.role.git ;\

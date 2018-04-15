@@ -5,6 +5,10 @@
   include_tasks: use-apt.yml
   when: ansible_pkg_mgr == "apt"
 
+- name: delegate to 'apk' system for installation
+  include_tasks: use-apk.yml
+  when: ansible_pkg_mgr == "apk"
+
 - name: delegate to 'yum' system for installation
   include_tasks: use-yum.yml
   when: ansible_pkg_mgr == "yum"

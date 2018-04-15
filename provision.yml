@@ -7,8 +7,8 @@
     - defaults/main.yml
 
   tasks:
-    - name: include tasks
-      include: tasks/main.yml
+    - name: include main tasks
+      import_tasks: tasks/main.yml
 
     - name: check vim version
       command: vim --version

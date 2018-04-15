@@ -2,15 +2,15 @@
 ---
 
 - name: delegate to 'apt' system for installation
-  include: use-apt.yml
+  include_tasks: use-apt.yml
   when: ansible_pkg_mgr == "apt"
 
 - name: delegate to 'yum' system for installation
-  include: use-yum.yml
+  include_tasks: use-yum.yml
   when: ansible_pkg_mgr == "yum"
 
 - name: delegate to 'homebrew' system for installation
-  include: use-brew.yml
+  include_tasks: use-brew.yml
   when: ansible_pkg_mgr == "homebrew"
 
 # inputrc

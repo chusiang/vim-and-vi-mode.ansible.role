@@ -1,8 +1,8 @@
 galaxy_info:
-  author: chusiang
+  author: Chu-Siang Lai
   description: Install Vim and use Vi-mode in everyway.
   license: MIT
-  min_ansible_version: 2.0
+  min_ansible_version: 2.4
 
   platforms:
     - name: Debian
@@ -30,4 +30,3 @@ galaxy_info:
     - vim
 
 dependencies: []
-

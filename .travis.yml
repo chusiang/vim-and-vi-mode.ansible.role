@@ -79,6 +79,14 @@ jobs:
         - echo "==> Run test case on CentOS 7 ..."
         - grep 'VIM - Vi IMproved' tests/output.centos7.log
 
+    - stage: Build
+      script:
+        - echo "==> Build on Alpine 3 ..."
+        - docker build -f tests/Dockerfile.alpine3 -t vim:alpine3 . | tee tests/output.alpine3.log
+
+        - echo "==> Run test case on Alpine 3 ..."
+        - grep 'VIM - Vi IMproved' tests/output.alpine3.log
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
   slack:

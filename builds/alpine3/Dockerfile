@@ -21,5 +21,7 @@ RUN echo "===> Clean ..."         && \
       rm -rf ~/.cache/pip
 
 WORKDIR /srv
-
 CMD [ "vim", "--version" ]
+
+# For run as daemon (service).
+ADD https://raw.githubusercontent.com/chusiang/vim-and-vi-mode.ansible.role/master/files/run.sh /usr/local/bin/

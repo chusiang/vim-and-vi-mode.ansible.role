@@ -4,8 +4,8 @@ DOMAIN = "vim-and-vi-mode.local"
 
 instances = [
   {
-    :name   => "alpine37",
-    :image  => "generic/alpine37"
+    :name   => "alpine3",
+    :image  => "generic/alpine38"
   },
   {
     :name   => "ubuntu1204",
@@ -18,6 +18,10 @@ instances = [
   {
     :name   => "ubuntu1604",
     :image  => "ubuntu/xenial64"
+  },
+  {
+    :name   => "ubuntu1804",
+    :image  => "ubuntu/bionic64"
   },
   {
     :name   => "debian7",

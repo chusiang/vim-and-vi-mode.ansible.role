@@ -6,6 +6,8 @@
   become: true
   apk:
     name: vim
+  retries: 3
+  delay: 10
 
 - name: touch /etc/profile.d/vim.sh
   become: true

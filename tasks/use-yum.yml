@@ -6,6 +6,8 @@
   yum:
     name: vim-enhanced
     state: present
+  retries: 3
+  delay: 10
 
 - name: install libselinux-python on rhel base system
   become: yes

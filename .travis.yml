@@ -57,14 +57,6 @@ jobs:
 
     - stage: Build
       script:
-        - echo "==> Build on Debian 8 ..."
-        - docker build -f tests/Dockerfile.debian8 -t vim:debian8 . | tee tests/output.debian8.log
-
-        - echo "==> Run test case on Debian 8 ..."
-        - grep 'VIM - Vi IMproved' tests/output.debian8.log
-
-    - stage: Build
-      script:
         - echo "==> Build on Debian 9 ..."
         - docker build -f tests/Dockerfile.debian9 -t vim:debian9 . | tee tests/output.debian9.log
 

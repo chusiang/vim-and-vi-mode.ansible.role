@@ -33,7 +33,7 @@
     path: /usr/local/share/vim/vimrc
     state: touch
     mode: 'u=rw,g=r,o=r'
-  when: file_check_vimrc.stat.exists == false
+  when: not file_check_vimrc.stat.exists
 
 - name: use dark background in vim
   become: yes
@@ -52,6 +52,6 @@
     path: /etc/inputrc
     state: touch
     mode: 'u=rw,g=r,o=r'
-  when: file_check_inputrc.stat.exists == false
+  when: not file_check_inputrc.stat.exists
 
 # vim: ft=yaml.ansible :

@@ -52,4 +52,4 @@
     mode: 'u=rw,g=r,o=r'
   when: file_check_inputrc.stat.exists == false
 
-# vim: ft=ansible :
+# vim: ft=yaml.ansible :

@@ -31,4 +31,4 @@
     dest: /etc/vimrc
     line: 'set background=dark'
 
-# vim: ft=ansible :
+# vim: ft=yaml.ansible :

@@ -19,4 +19,4 @@
       debug:
         msg: "{{ vim_version.stdout_lines }}"
 
-# vim: ft=ansible :
+# vim: ft=yaml.ansible :

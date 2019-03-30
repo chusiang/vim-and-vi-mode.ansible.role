@@ -2,8 +2,7 @@
 ---
 
 # Install Vim.
-- name: install vim on alpine base system
-  become: true
+- name: install vim on alpine base system become: true
   apk:
     name: vim
 
@@ -45,4 +44,4 @@
     state: touch
     mode: "u=rw,g=r,o=r"
 
-# vim: ft=ansible :
+# vim: ft=yaml.ansible :

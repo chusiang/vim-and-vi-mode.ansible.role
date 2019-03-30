@@ -13,6 +13,10 @@
   include_tasks: use-yum.yml
   when: ansible_pkg_mgr == "yum"
 
+- name: delegate to 'zypper' system for installation
+  include_tasks: use-zypper.yml
+  when: ansible_pkg_mgr == "zypper"
+
 - name: delegate to 'homebrew' system for installation
   include_tasks: use-brew.yml
   when: ansible_pkg_mgr == "homebrew"
@@ -35,4 +39,4 @@
     mode: 0644
     backup: yes
 
-# vim: ft=ansible :
+# vim: ft=yaml.ansible :

@@ -38,6 +38,10 @@ instances = [
   {
     :name   => "centos7",
     :image  => "bento/centos-7.4"
+  },
+  {
+    :name   => "opensuse42",
+    :image  => "opensuse/openSUSE-42.3-x86_64"
   }
 ]
 

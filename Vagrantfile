@@ -5,7 +5,7 @@ DOMAIN = "vim-and-vi-mode.local"
 instances = [
   {
     :name   => "alpine3",
-    :image  => "generic/alpine38"
+    :image  => "generic/alpine312"
   },
   {
     :name   => "ubuntu1204",
@@ -36,12 +36,20 @@ instances = [
     :image  => "debian/stretch64"
   },
   {
+    :name   => "debian10",
+    :image  => "debian/buster64"
+  },
+  {
     :name   => "centos6",
-    :image  => "bento/centos-6.9"
+    :image  => "bento/centos-6"
   },
   {
     :name   => "centos7",
-    :image  => "bento/centos-7.7"
+    :image  => "bento/centos-7"
+  },
+  {
+    :name   => "centos8",
+    :image  => "bento/centos-8"
   },
   {
     :name   => "opensuse42",
@@ -61,7 +69,7 @@ Vagrant.configure("2") do |config|
       node.vm.box = instance[:image].to_s
 
       # hostname = <instance name>.<DOMAIN>
-      if ( instance[:name].to_s != "alpine37" )
+      if ( instance[:name].to_s != "alpine3" )
         node.vm.hostname = instance[:name].to_s + "." + DOMAIN
       end
 
@@ -71,9 +79,9 @@ Vagrant.configure("2") do |config|
 
       # Provision before run playbook.
       case
-      when instance[:name].to_s == "alpine37"
+      when instance[:name].to_s == "alpine3"
         node.vm.provision "shell",
-          inline: "sudo apk update && sudo apk add python"
+          inline: "sudo apk update && sudo apk add python2"
       when instance[:name].to_s == "ubuntu1604"
         node.vm.provision "shell",
           inline: "sudo sed -i 's/archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list"
